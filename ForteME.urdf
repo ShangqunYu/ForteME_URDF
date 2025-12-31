@@ -60,16 +60,16 @@
   </link>
 
   <!-- Joint 1-->
-  <joint name="shoulder_roll" type="revolute">
+  <joint name="shoulder_pitch" type="revolute">
     <origin xyz="0 -0.06300000 0.12500000" rpy="0 0 0"/>
     <parent link="shoulder_yaw_link"/>
-    <child link="shoulder_roll_link"/>
+    <child link="shoulder_pitch_link"/>
     <axis xyz="0 1 0"/>
     <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
   </joint>
 
-  <!-- shoulder roll link -->
-  <link name="shoulder_roll_link">
+  <!-- shoulder pitch link -->
+  <link name="shoulder_pitch_link">
     <inertial>
       <origin xyz="0.02319418 0.09131645 0.00007827" rpy="0 0 0"/>
       <mass value="0.59865534"/>
@@ -78,7 +78,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://meshes/shoulder_roll_link.stl"/>
+        <mesh filename="package://meshes/shoulder_pitch_link.stl"/>
       </geometry>
       <material name="torso_parts_material">
         <color rgba="0.723666 0.709829 0.56081 1"/>
@@ -87,15 +87,15 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://meshes/shoulder_roll_link.stl"/>
+        <mesh filename="package://meshes/shoulder_pitch_link.stl"/>
       </geometry>
     </collision>
   </link>
 
   <!-- Joint 2-->
-  <joint name="shoulder_pitch" type="revolute">
+  <joint name="shoulder_roll" type="revolute">
     <origin xyz="0.00050000 0.06300000 0" rpy="0 0 0"/>
-    <parent link="shoulder_roll_link"/>
+    <parent link="shoulder_pitch_link"/>
     <child link="upper_arm_link"/>
     <axis xyz="1 0 0"/>
     <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
@@ -138,9 +138,9 @@
   <!-- elbow link -->
   <link name="elbow_link">
     <inertial>
-      <origin xyz="0.14623083 0.03399767 0.03267422" rpy="0 0 0"/>
-      <mass value="0.91715589"/>
-      <inertia ixx="0.0005818" ixy="2.662e-7" ixz="-0.00029566" iyy="0.02097747" iyz="-4.581e-8" izz="0.02075426"/>
+      <origin xyz="0.00516413 0.03399824 0.02949132" rpy="0 0 0"/>
+      <mass value="0.38627496"/>
+      <inertia ixx="0.00045856" ixy="-3.281e-8" ixz="0.00000282" iyy="0.00060413" iyz="-2.546e-8" izz="0.00037542"/>
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -159,11 +159,44 @@
     </collision>
   </link>
 
+    <!-- Joint 4-->
+  <joint name="lower_arm_roll" type="revolute">
+    <origin xyz="0.06050000 0.03400000 0.03500000" rpy="0 0 0"/>
+    <parent link="elbow_link"/>
+    <child link="lower_arm_link"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+  </joint>
+
+  <!-- elbow link -->
+  <link name="lower_arm_link">
+    <inertial>
+      <origin xyz="0.18837256 -0.00000274 -0.00000986" rpy="0 0 0"/>
+      <mass value="0.53088093"/>
+      <inertia ixx="0.00011648" ixy="2.452e-7" ixz="0.00000116" iyy="0.00708678" iyz="-2.157e-8" izz="0.00709904"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/lower_arm_link.stl"/>
+      </geometry>
+      <material name="torso_parts_material">
+        <color rgba="0.723666 0.709829 0.56081 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://meshes/lower_arm_link.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
 
   <!-- Joint 4-->
   <joint name="wrist_pitch" type="revolute">
-    <origin xyz="0.44700000 0.00550000 0.03500000" rpy="0 0 0"/>
-    <parent link="elbow_link"/>
+    <origin xyz="0.38650000 -0.02850000 0" rpy="0 0 0"/>
+    <parent link="lower_arm_link"/>
     <child link="wrist_link"/>
     <axis xyz="0 1 0"/>
     <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
