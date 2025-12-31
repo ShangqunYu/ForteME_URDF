@@ -4,9 +4,10 @@
   <asset>
     <mesh name="base_link" file="meshes/base_link.stl"/>
     <mesh name="shoulder_yaw_link" file="meshes/shoulder_yaw_link.stl"/>
-    <mesh name="shoulder_roll_link" file="meshes/shoulder_roll_link.stl"/>
+    <mesh name="shoulder_pitch_link" file="meshes/shoulder_pitch_link.stl"/>
     <mesh name="upper_arm_link" file="meshes/upper_arm_link.stl"/>
     <mesh name="elbow_link" file="meshes/elbow_link.stl"/>
+    <mesh name="lower_arm_link" file="meshes/lower_arm_link.stl"/>
     <mesh name="wrist_link" file="meshes/wrist_link.stl"/>
     <mesh name="end_effector_link" file="meshes/end_effector_link.stl"/>
   </asset>
@@ -16,27 +17,32 @@
     <body name="shoulder_yaw_link" pos="0 0 0.052">
       <inertial pos="-0.0004308 0.0162677 0.050495" quat="0.421511 0.56486 -0.569966 0.422376" mass="5.03336" diaginertia="0.0415749 0.0298781 0.0227324"/>
       <joint name="shoulder_yaw" pos="0 0 0" axis="0 0 1" range="-3.14159 3.14159" actuatorfrcrange="-10 10"/>
-      <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="shoulder_yaw_link"/>
-      <body name="shoulder_roll_link" pos="0 -0.063 0.125">
+      <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="shoulder_yaw_link" contype="0"/>
+      <body name="shoulder_pitch_link" pos="0 -0.063 0.125">
         <inertial pos="0.0231942 0.0913164 7.827e-05" quat="-0.224575 0.671616 0.222987 0.669907" mass="0.598655" diaginertia="0.00257241 0.00239093 0.000750547"/>
-        <joint name="shoulder_roll" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159" actuatorfrcrange="-10 10"/>
-        <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="shoulder_roll_link"/>
+        <joint name="shoulder_pitch" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159" actuatorfrcrange="-10 10"/>
+        <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="shoulder_pitch_link" contype="0"/>
         <body name="upper_arm_link" pos="0.0005 0.063 0">
           <inertial pos="0.164528 -0.00229075 7.89e-06" quat="0.501033 0.502213 0.497762 0.498979" mass="0.996095" diaginertia="0.0155833 0.0155469 0.000839826"/>
-          <joint name="shoulder_pitch" pos="0 0 0" axis="1 0 0" range="-3.14159 3.14159" actuatorfrcrange="-10 10"/>
-          <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="upper_arm_link"/>
+          <joint name="shoulder_roll" pos="0 0 0" axis="1 0 0" range="-3.14159 3.14159" actuatorfrcrange="-10 10"/>
+          <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="upper_arm_link" contype="0"/>
           <body name="elbow_link" pos="0.4295 -0.034 0">
-            <inertial pos="0.146231 0.0339977 0.0326742" quat="0.50371 0.49627 0.496377 0.503589" mass="0.917156" diaginertia="0.0209775 0.0207586 0.000577468"/>
+            <inertial pos="0.00516413 0.0339982 0.0294913" quat="0.706924 -0.0120121 -0.0119342 0.707087" mass="0.386275" diaginertia="0.00060413 0.000458656 0.000375324"/>
             <joint name="elbow_pitch" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159" actuatorfrcrange="-10 10"/>
             <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="elbow_link"/>
-            <body name="wrist_link" pos="0.447 0.0055 0.035">
-              <inertial pos="0.0411542 0.0292951 -0.00014264" quat="0.0234432 0.706698 -0.0238223 0.706725" mass="0.169999" diaginertia="0.00022648 0.000184952 9.26882e-05"/>
-              <joint name="wrist_pitch" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159" actuatorfrcrange="-10 10"/>
-              <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="wrist_link"/>
-              <body name="end_effector_link" pos="0.087 0.0285 0">
-                <inertial pos="0.0348448 0.0104082 0.010408" quat="0.309854 0.748054 0.224582 0.542188" mass="0.0631817" diaginertia="6.36672e-05 4.851e-05 4.84128e-05"/>
-                <joint name="wrist_roll" pos="0 0 0" axis="1 0 0" range="-3.14159 3.14159" actuatorfrcrange="-10 10"/>
-                <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="end_effector_link"/>
+            <body name="lower_arm_link" pos="0.0605 0.034 0.035">
+              <inertial pos="0.188373 -2.74e-06 -9.86e-06" quat="-0.000608358 0.707165 -0.000633336 0.707048" mass="0.530881" diaginertia="0.00709904 0.00708678 0.00011648"/>
+              <joint name="lower_arm_roll" pos="0 0 0" axis="1 0 0" range="-3.14159 3.14159" actuatorfrcrange="-10 10"/>
+              <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="lower_arm_link" contype="0"/>
+              <body name="wrist_link" pos="0.3865 -0.0285 0">
+                <inertial pos="0.0411542 0.0292951 -0.00014264" quat="0.0234432 0.706698 -0.0238223 0.706725" mass="0.169999" diaginertia="0.00022648 0.000184952 9.26882e-05"/>
+                <joint name="wrist_pitch" pos="0 0 0" axis="0 1 0" range="-3.14159 3.14159" actuatorfrcrange="-10 10"/>
+                <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="wrist_link" contype="0"/>
+                <body name="end_effector_link" pos="0.087 0.0285 0">
+                  <inertial pos="0.0348448 0.0104082 0.010408" quat="0.309854 0.748054 0.224582 0.542188" mass="0.0631817" diaginertia="6.36672e-05 4.851e-05 4.84128e-05"/>
+                  <joint name="wrist_roll" pos="0 0 0" axis="1 0 0" range="-3.14159 3.14159" actuatorfrcrange="-10 10"/>
+                  <geom type="mesh" rgba="0.723666 0.709829 0.56081 1" mesh="end_effector_link" contype="0"/>
+                </body>
               </body>
             </body>
           </body>
